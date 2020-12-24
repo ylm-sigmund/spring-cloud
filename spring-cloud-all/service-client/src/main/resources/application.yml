@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: service-client
+
+  autoconfigure:
+    exclude: org.springframework.cloud.consul.serviceregistry.ConsulAutoServiceRegistrationAutoConfiguration
+
+  kafka:
+    producer:
+      value-serializer: com.diy.sigmund.client.kafka.ObjectSerializer
+    consumer:
+      group-id: gupao-group
+      value-deserializer: com.diy.sigmund.client.kafka.ObjectDeserializer
+
+  cloud:
+    stream:
+      bindings:
+        person-source:
+          destination: gupao
+        person-sink:
+          destination: gupao
+          group: gupao-group

@@ -1,0 +1,46 @@
+spring:
+  cloud:
+    zookeeper:
+      enabled: false # Zookeeper 服务发现与注册改为失效，默认值是true
+    consul:
+      enabled: false # Consul 服务发现与注册改为失效，默认值是true
+
+server:
+  port: 8081 # 0 随机端口
+
+eureka:
+  client:
+    enabled: false # Eureka 服务发现与注册改为失效，默认值是true
+--- # profiles for eureka org.springframework.cloud.netflix.eureka.EurekaClientConfigBean
+spring:
+  profiles: eureka
+# eureka 客户端配置
+eureka:
+  server: # 官方不存在的配置（自定义配置）
+    host: 127.0.0.1
+    port: 12345
+  client:
+    enabled: true
+    serviceUrl:
+      defaultZone: http://${eureka.server.host}:${eureka.server.port}/eureka
+    registryFetchIntervalSeconds: 5 # 5 秒轮询一次
+  instance:
+    instanceId: ${spring.application.name}:${server.port} # com.netflix.appinfo.EurekaInstanceConfig
+
+--- # profiles for zookeeper org.springframework.cloud.zookeeper.ZookeeperProperties
+spring:
+  profiles: zookeeper
+  cloud:
+    zookeeper:
+      enabled: true
+      connect-string: 127.0.0.1:2181
+
+--- # profiles for consul org.springframework.cloud.consul.discovery.ConsulDiscoveryProperties
+spring:
+  profiles: consul
+  cloud:
+    consul:
+      discovery:
+        enabled: true
+        ipAddress: 127.0.0.1
+        port: 8500

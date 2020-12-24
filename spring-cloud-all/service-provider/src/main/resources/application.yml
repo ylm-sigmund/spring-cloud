@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: service-provider
+    #排除这个bean
+#  autoconfigure:
+#    exclude: org.springframework.cloud.consul.serviceregistry.ConsulAutoServiceRegistrationAutoConfiguration
+
+# server.port放在主yml或者辅yml位置都可
+#server:
+#  port: 0 #随机端口
