@@ -31,7 +31,7 @@ import com.diy.sigmund.mvcframework.annotation.SService;
  * @author ylm-sigmund
  * @since 2021/3/3 21:07
  */
-public class SDispatcherServlet extends HttpServlet {
+public class SDispatcherServletV2 extends HttpServlet {
     /**
      * application.properties配置文件数据
      */

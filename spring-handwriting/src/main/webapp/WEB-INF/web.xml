@@ -7,10 +7,11 @@
 
     <servlet>
         <servlet-name>smvc</servlet-name>
-        <servlet-class>com.diy.sigmund.mvcframework.v2.servlet.SDispatcherServlet</servlet-class>
+        <servlet-class>com.diy.sigmund.mvcframework.v4.webmvc.servlet.SDispatcherServletV4</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>application.properties</param-value>
+<!--            <param-value>application.properties</param-value>-->
+            <param-value>classpath:application.properties</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
